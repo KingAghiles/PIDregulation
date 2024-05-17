@@ -26,8 +26,3 @@ void Piece::mettre_a_jour_regulation(float temperature_consigne, int current_tim
     temperature += dT;
     radiateur.mettre_a_jour_regulation(temperature_consigne, temperature, current_time);
 }
-
-
-
-
-

@@ -1,8 +1,8 @@
 #ifndef REGULATION_H
 #define REGULATION_H
 
-#include <vector>
-#include <string>
+#include &lt;vector&gt;
+#include &lt;string&gt;
 
 class Regulation {
 private:
@@ -12,7 +12,7 @@ private:
     float error_integral;
     float last_pid_output;  
     bool regulation_active;
-    std::vector<bool> onOffSchedule; 
+    std::vector&lt;bool&gt; onOffSchedule; 
 
 public:
     Regulation(float p, float i, float d, float consigne_val);
@@ -28,10 +28,3 @@ public:
 };
 
 #endif // REGULATION_H
-
-
-
-
-
-
-

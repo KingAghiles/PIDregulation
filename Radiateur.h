@@ -1,4 +1,4 @@
-#ifndef RADIATEUR_H
+ #ifndef RADIATEUR_H
 #define RADIATEUR_H
 
 #include "Regulation.h"
@@ -6,11 +6,11 @@
 class Radiateur {
 private:
     int puissance_watt;
-    Regulation& regulation;
+    Regulation&amp; regulation;
     
 
 public:
-    Radiateur(int puissance_watt, Regulation& regulation);
+    Radiateur(int puissance_watt, Regulation&amp; regulation);
     int get_max_watt();
     int get_sortie_actuelle();
     float recuperer_temperature_consigne();
@@ -23,5 +23,3 @@ public:
 };
 
 #endif // RADIATEUR_H
-
-

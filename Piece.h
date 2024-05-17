@@ -20,6 +20,3 @@ public:
 };
 
 #endif // PIECE_H
-
-
-

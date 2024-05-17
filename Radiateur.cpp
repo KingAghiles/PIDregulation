@@ -29,7 +29,3 @@ void Radiateur::mettre_a_jour_regulation(float temperature_consigne, float tempe
 double Radiateur::calculer_joules(double deltaT) const {
     return puissance_watt * deltaT;
 }
-
-
-
-

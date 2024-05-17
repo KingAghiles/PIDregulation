@@ -1,6 +1,6 @@
 #include "Regulation.h"
-#include <algorithm>
-#include <cmath>
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
 
 Regulation::Regulation(float p, float i, float d, float consigne_val)
     : P(p), I(i), D(d), consigne(consigne_val), previous_error(0), error_integral(0), last_pid_output(0.0), regulation_active(false) {}
@@ -15,9 +15,9 @@ void Regulation::calculatePID(float temperature_actuelle, int current_time) {
 
 void Regulation::updateOnOffSchedule(float pid_output_rounded) {
     onOffSchedule.clear();
-    int onPeriods = static_cast<int>(20 * (pid_output_rounded / 100.0));
-    for (int i = 0; i < 20; ++i) {
-        onOffSchedule.push_back(i < onPeriods);
+    int onPeriods = static_cast&lt;int&gt;(20 * (pid_output_rounded / 100.0));
+    for (int i = 0; i &lt; 20; ++i) {
+        onOffSchedule.push_back(i &lt; onPeriods);
     }
 }
 
@@ -38,7 +38,7 @@ void Regulation::updateRegulation(int current_time, float currentTemp) {
     int current_period = (current_time % 200) / 10;  // Calcul du période actuelle dans le cycle de 200 secondes
 
     // Vérifie si le cycle actuel est dans la phase ON selon le PID
-    if (current_period < onOffSchedule.size() && onOffSchedule[current_period] && currentTemp < consigne) {
+    if (current_period &lt; onOffSchedule.size() &amp;&amp; onOffSchedule[current_period] &amp;&amp; currentTemp &lt; consigne) {
         regulation_active = true;  // Active la régulation si on est dans une période ON et la température est inférieure à la consigne
     } else {
         regulation_active = false;  // Désactive la régulation sinon
@@ -69,17 +69,3 @@ float Regulation::recuperer_consigne() const {
 void Regulation::definir_consigne(float nouvelleConsigne) {
     consigne = nouvelleConsigne;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

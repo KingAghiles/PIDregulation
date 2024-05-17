@@ -1,6 +1,6 @@
-#include <iostream>
-#include <fstream>
-#include <cmath>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;cmath&gt;
 #include "Piece.h"
 #include "Radiateur.h"
 #include "Regulation.h"
@@ -13,15 +13,15 @@ int main() {
     float previousTemp = piece.recuperer_temperature();
     // Ouvrir un fichier CSV pour l'enregistrement
     std::ofstream dataFile("simulation_results.csv");
-    dataFile << "Time,Sortie PID,Sortie PID Arrondie,Regulation,Température Pièce,Température Consigne, Joules\n";
+    dataFile &lt;&lt; "Time,Sortie PID,Sortie PID Arrondie,Regulation,Température Pièce,Température Consigne, Joules\n";
 
     // Simulation pour 200 secondes, en supposant que chaque boucle représente une seconde
-    for (int time = 0; time <= 200; ++time) {
+    for (int time = 0; time &lt;= 200; ++time) {
         float currentTemp = piece.recuperer_temperature();
         regulation.calculatePID(currentTemp, time);  // Mise à jour du PID chaque seconde
         regulation.updateRegulation(time, currentTemp); 
         float sortiePID = regulation.getLastPIDOutput();
-        int sortiePIDArrondie = static_cast<int>(std::round(sortiePID));
+        int sortiePIDArrondie = static_cast&lt;int&gt;(std::round(sortiePID));
         int regulationActive = regulation.isRegulationActive() ? 1 : 0;
         float temperatureConsigne = regulation.recuperer_consigne(); // Récupère la température de consigne
 
@@ -29,13 +29,13 @@ int main() {
         float joules = radiateur.get_max_watt() * deltaT; // Calcul des joules
 
         // Écrire les données dans le fichier CSV
-        dataFile << time << "," << sortiePID << "," << sortiePIDArrondie << "," << regulationActive << ",";
-        dataFile << currentTemp << "," << temperatureConsigne << "," << joules <<"\n";
+        dataFile &lt;&lt; time &lt;&lt; "," &lt;&lt; sortiePID &lt;&lt; "," &lt;&lt; sortiePIDArrondie &lt;&lt; "," &lt;&lt; regulationActive &lt;&lt; ",";
+        dataFile &lt;&lt; currentTemp &lt;&lt; "," &lt;&lt; temperatureConsigne &lt;&lt; "," &lt;&lt; joules &lt;&lt;"\n";
 
         if (time % 10 == 0) {  // Optionnellement, afficher le planning ON/OFF à chaque début de cycle
-            dataFile << regulation.getOnOffSchedule();
+            dataFile &lt;&lt; regulation.getOnOffSchedule();
         }
-        dataFile << "\n";
+        dataFile &lt;&lt; "\n";
 
         // Simuler un changement de température
         piece.definir_temperature(currentTemp + (sortiePID / 100.0f) - 0.05); // Changement hypothétique basé sur PID
@@ -43,21 +43,6 @@ int main() {
 
     // Fermer le fichier
     dataFile.close();
-    std::cout << "Simulation \n";
+    std::cout &lt;&lt; "Simulation \n";
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
